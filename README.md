@@ -1,2 +1,11 @@
-# entelect_internal_challenge_2020
-Entelect Challenge 2020 Hackathon Company Cup.
+# Entelect Challenge 2020 Company Cup Hackathon 
+
+## Team members
+- Zane Bloom
+- Richard Oliver
+- Tiaan Malherbe
+
+## Why C++?
+Because the spinner wheel did not land on Julia :-(
+
+
