@@ -18,15 +18,18 @@ class Shape {
 public:
     int id;
     int numAvailable;
+    int rotation;
     std::vector<Cell> cells;
-    Shape(int id2, int num) {
+    Shape(int id2, int num, int rot) {
         id = id2;
         numAvailable = num;
+        rotation = rot;
     }
 
-    Shape(int id2, int num, std::vector<Cell> cells2) {
+    Shape(int id2, int num, int rot, std::vector<Cell> cells2) {
         id = id2;
         numAvailable = num;
+        rotation = rot;
         cells = cells2;
     }
 };
@@ -49,8 +52,6 @@ public:
 
 
 int main() {
-
-
 
 
 
