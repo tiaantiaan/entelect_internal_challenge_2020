@@ -54,7 +54,12 @@ int main() {
 
 //count number of filled cells
 int numberOfFilledCells(std::vector<Shape> shapes) {
+    int numberOfFillledCells = 0;
+    for (int i = 0; i < shapes.size(); ++i) {
+        numberOfFillledCells += shapes[i].cells.size();
+    }
 
+    return numberOfFillledCells;
 }
 
 //count number of individual empty groups
@@ -72,6 +77,6 @@ int calculateScore(Input input) {
     score -= numberOfEmptyGroupings(input.shapes) * 2;
     score -= numberOfSoloWhiteBlocks(input.shapes) * 4;
 
-    return floor(totalCapacity/numberOfFilledCells(input.shapes) * score);
+    return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
 
