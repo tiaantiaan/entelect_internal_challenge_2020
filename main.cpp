@@ -284,7 +284,7 @@ std::string generateOutputString(const Input &input) {
 
 Input populateInput(Input input) {
 
-    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 0, 0, 1), PlacedShape(2, 0, 0, 1)};
+    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 10, 20, 1), PlacedShape(2, 30, 40, 1)};
 
     std::vector<Shape> shapes;
 
@@ -309,9 +309,6 @@ Input populateInput(Input input) {
 }
 
 int main() {
-//    Shape testShape = getShapeWithRotation(1, 1);
-//    Shape testShape2 = getShapeWithRotation(2, 1);
-//    Shape testShape3 = getShapeWithRotation(3, 1);
 
     // Get input
     Input input = getInput("documents/map_1.input");
@@ -345,6 +342,8 @@ int main() {
     std::cout << generateOutputString(test);
 
 
+    //todo delete test junk
+    std::cout << "---------------------------\n";
     for (int i = 0; i < validPopulatedInput.shapes.size(); ++i) {
         std::cout << "ID: ";
         std::cout << validPopulatedInput.shapes[i].id;
@@ -360,6 +359,8 @@ int main() {
 
         }
     }
+    std::cout << "---------------------------\n";
+
 
     return 0;
 }
