@@ -137,10 +137,10 @@ std::vector<Shape> getShapes() {
             Shape(4, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(0, 3), Cell(1, 0), Cell(1, 2)}),
             Shape(4, 0, 4, {Cell(1, 2), Cell(3, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3), Cell(3, 3)}),
 
-            Shape(5, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(0, 2), Cell(1, 0), Cell(2, 0), Cell(3, 0)}),
+            Shape(5, 0, 1, {Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(1, 0), Cell(2, 0), Cell(3, 0)}),
             Shape(5, 0, 2, {Cell(1, 0), Cell(2, 0), Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3)}),
             Shape(5, 0, 3, {Cell(3, 1), Cell(3, 2), Cell(3, 3), Cell(2, 3), Cell(1, 3), Cell(0, 3)}),
-            Shape(5, 0, 4, {Cell(0, 0), Cell(10, 1), Cell(0, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3)}),
+            Shape(5, 0, 4, {Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3)}),
 
             Shape(6, 0, 1, {Cell(0, 0), Cell(1, 0)}),
             Shape(6, 0, 2, {Cell(1, 0), Cell(1, 1)}),
@@ -172,8 +172,8 @@ std::vector<Shape> getShapes() {
             Shape(11, 0, 3, {Cell(2, 2), Cell(0, 2), Cell(1, 2)}),
             Shape(11, 0, 4, {Cell(0, 1), Cell(0, 2), Cell(0, 0)}),
 
-            Shape(12, 0, 1, {Cell(2, 0), Cell(2, 1), Cell(1, 1), Cell(1, 2), Cell(10, 2)}),
-            Shape(12, 0, 2, {Cell(2, 0), Cell(1, 0), Cell(1, 1), Cell(0, 1), Cell(10, 2)}),
+            Shape(12, 0, 1, {Cell(2, 0), Cell(2, 1), Cell(1, 1), Cell(1, 2), Cell(1, 2)}),
+            Shape(12, 0, 2, {Cell(2, 0), Cell(1, 0), Cell(1, 1), Cell(0, 1), Cell(1, 2)}),
             Shape(12, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(1, 1), Cell(1, 2), Cell(2, 2)}),
             Shape(12, 0, 4, {Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 1), Cell(0, 0)}),
 
@@ -188,7 +188,7 @@ std::vector<Shape> getShapes() {
             Shape(14, 0, 4, {Cell(2, 1), Cell(2, 2), Cell(1, 1), Cell(1, 2), Cell(0, 2)}),
 
             Shape(15, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(1, 2), Cell(2, 0), Cell(2, 1)}),
-            Shape(15, 0, 2, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 2), Cell(10, 1)}),
+            Shape(15, 0, 2, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 2), Cell(1, 1)}),
             Shape(15, 0, 3, {Cell(2, 1), Cell(2, 2), Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 2)}),
             Shape(15, 0, 4, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 2), Cell(2, 1)}),
 
@@ -460,61 +460,83 @@ int calculateScore(const Input &input) {
 int main() {
 
     // Get input
-    Input input = getInput("documents/map_2.input");
-    Input populatedInput = getInput("documents/map_2.input");
+    Input input = getInput("documents/map_1.input");
+    Input populatedInput = getInput("documents/map_1.input");
 
     // Populate Input.shapes
-    std::vector<PlacedShape> placedShapes;
 
+    int minNumberOfPieces = 1;
+    int maxNumberOfPieces = 2;
 
+    int numberOfRandomSolutions = 30;
+    int bestScore = -10000;
 
+    for (int k = 0; k < numberOfRandomSolutions; ++k) {
 
-    int numberOfPieces = 35;
+        int numberOfPieces = getRandomValue(minNumberOfPieces, maxNumberOfPieces);
+        std::vector<PlacedShape> placedShapes;
 
-    for (int i = 0; i < numberOfPieces; ++i) {
-        int id = getRandomIdFromInput(input);
-        int rotation = 1;
-        int row = getRandomValue(1, input.dimRow-10);
-        int col = getRandomValue(1, input.dimCol-10);
-//        int row = 1;
-//        int col = 4;
+        for (int i = 0; i < numberOfPieces; ++i) {
+            int id = getRandomIdFromInput(input);
+            int rotation = 1;
+            int row = getRandomValue(1, input.dimRow - 10);
+            int col = getRandomValue(1, input.dimCol - 10);
 
-        placedShapes.push_back(PlacedShape(id, row, col, rotation));
+            placedShapes.push_back(PlacedShape(id, row, col, rotation));
+
+        }
+        Input validPopulatedInput = populateInput(populatedInput, placedShapes);
+
+        int score = calculateScore(validPopulatedInput);
+
+        if (score >= bestScore) {
+            bestScore = score;
+            std::cout << "=================================\n";
+            std::cout << "count: ";
+            std::cout << k;
+            std::cout << "\n";
+            std::cout << "numberOfPieces: ";
+            std::cout << numberOfPieces;
+            std::cout << "\n";
+            std::cout << "score: ";
+            std::cout << score;
+            std::cout << "\n";
+            std::cout << "---------------------------\n";
+
+            std::cout << generateOutputString(validPopulatedInput);
+        }
+        std::cout << k;
+
     }
 
 
 //    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 20, 0, 1), PlacedShape(2, 10, 0, 1)};
-    Input validPopulatedInput = populateInput(populatedInput, placedShapes);
+
 
     // Calculate score
-    int score = calculateScore(validPopulatedInput);
-
-    std::cout << "score: ";
-    std::cout << score;
-    std::cout << "\n";
 
 
 
     //    OUtput
 
     //todo delete test junk
-    Input test;
+//    Input test;
+//
+//    std::vector<Cell> cells1;
+//    cells1.push_back(Cell(0, 2));
+//    cells1.push_back(Cell(0, 3));
+//    cells1.push_back(Cell(1, 3));
+//
+//    std::vector<Cell> cells2;
+//    cells2.push_back(Cell(2, 5));
+//    cells2.push_back(Cell(3, 5));
+//    cells2.push_back(Cell(3, 6));
+//    cells2.push_back(Cell(4, 6));
+//
+//    test.shapes.push_back(Shape(1, 1, 0, cells1));
+//    test.shapes.push_back(Shape(3, 1, 0, cells2));
 
-    std::vector<Cell> cells1;
-    cells1.push_back(Cell(0, 2));
-    cells1.push_back(Cell(0, 3));
-    cells1.push_back(Cell(1, 3));
 
-    std::vector<Cell> cells2;
-    cells2.push_back(Cell(2, 5));
-    cells2.push_back(Cell(3, 5));
-    cells2.push_back(Cell(3, 6));
-    cells2.push_back(Cell(4, 6));
-
-    test.shapes.push_back(Shape(1, 1, 0, cells1));
-    test.shapes.push_back(Shape(3, 1, 0, cells2));
-
-    std::cout << generateOutputString(validPopulatedInput);
 
 
 //    //todo delete test junk
