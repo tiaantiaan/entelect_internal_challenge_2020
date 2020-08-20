@@ -95,6 +95,7 @@ Input getInput(const std::string &filename) {
     for (int i = 3; i < lines.size() - 1; i++) {
         std::string id = lines[i].substr(0, lines[i].find(','));
         std::string num  = lines[i].substr(lines[i].find(',') + 1, lines[i].length());
+        // todo shape cells and rot needs to come from somewhere?
         input.shapes.push_back(Shape(std::stoi(id), std::stoi(num), 0));
     }
 
