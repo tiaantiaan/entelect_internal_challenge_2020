@@ -79,15 +79,23 @@ class Board {
 public:
     explicit Board(const Input &input) {
         for (int k = 0; k < input.dimRow; ++k) {
-            std::vector<Cell> bob;
+            std::vector<Cell> bob(input.dimRow);
             for (int i = 0; i < input.dimCol; ++i) {
-                bob.emplace_back(i, k, -1);
+                //Set everything to -1 White
+                bob[i] = Cell(k, i, -1);
             }
             boardCells.push_back(bob);
         }
 
+        for (auto &blockedCells : input.blockedCells) {
+            boardCells[blockedCells.col][blockedCells.row].value = -2;
+        }
+
         for (auto &shape : input.shapes) {
             for (auto &cell : shape.cells) {
+                //Trying to place ontop of previous placement OR trying to place on blocked section
+                if (boardCells[cell.col][cell.row].value != -1)
+                    baseScore = -1;
                 boardCells[cell.col][cell.row].value = cell.value;
             }
         }
@@ -95,6 +103,8 @@ public:
     }
 
     std::vector<std::vector<Cell>> boardCells;
+    //Score of the board after initial build
+    int baseScore = 0;
 };
 
 class Output {
@@ -410,12 +420,19 @@ int numberOfFilledCells(const std::vector<Shape> &shapes) {
     return numberOfFilledCells;
 }
 
-
-//todo check valid groups
+//todo check valid groups??????
 bool isNewWhiteCell(int i, int j, Board board, std::vector<Cell> foundCells) {
     if (foundCells.empty())
         return true;
+
     return false;
+}
+
+bool isWhiteCell(int i, int j, const Input &input, Board board) {
+    if (i > 0 && j > 0 && i < input.dimRow && j < input.dimCol) {
+        return false;
+    }
+    return board.boardCells[i][j].value == -1;
 }
 
 //count number of individual empty groups
@@ -427,7 +444,7 @@ int numberOfEmptyGroupings(const Input &input) {
     for (int i = 0; i < input.dimCol; ++i) {
         for (int j = 0; j < input.dimRow; ++j) {
             if (board.boardCells[i][j].value == -1) {
-                if (isNewWhiteCell(i, j, board, foundCells)) {
+                if (isWhiteCell(i, j, input, board) && isNewWhiteCell(i, j, board, foundCells)) {
                     foundCells.push_back(board.boardCells[i][j]);
                 }
             }
@@ -438,15 +455,46 @@ int numberOfEmptyGroupings(const Input &input) {
 
 }
 
-int numberOfSoloWhiteBlocks(const std::vector<Shape> &shapes) {
+
+int numberOfSoloWhiteBlocks(const Input &input) {
+    Board board = Board(input);
+
+    int numberOfSoloWhiteBlocks = 0;
+    for (int i = 0; i < input.dimCol; ++i) {
+        for (int j = 0; j < input.dimRow; ++j) {
+            //if is a white block
+            if (board.boardCells[i][j].value == -1) {
+                if (!isWhiteCell(i - 1, j - 1, input, board)
+                    && !isWhiteCell(i - 1, j, input, board)
+                    && !isWhiteCell(i - 1, j + 1, input, board)
+                    && !isWhiteCell(i, j - 1, input, board)
+                    && !isWhiteCell(i, j, input, board)
+                    && !isWhiteCell(i, j + 1, input, board)
+                    && !isWhiteCell(i + 1, j - 1, input, board)
+                    && !isWhiteCell(i + 1, j, input, board)
+                    && !isWhiteCell(i + 1, j + 1, input, board))
+                    numberOfSoloWhiteBlocks++;
+            }
+        }
+    }
+
+    return numberOfSoloWhiteBlocks;
+
 
 }
 
 int calculateScore(const Input &input) {
     int totalCapacity = input.dimCol * input.dimRow;
+
+    Board board = Board(input);
+
+    //Invalid board
+    if (board.baseScore < 0)
+        return -100;
+
     int score = numberOfFilledCells(input.shapes) * 10;
     score -= numberOfEmptyGroupings(input) * 2;
-    score -= numberOfSoloWhiteBlocks(input.shapes) * 4;
+    score -= numberOfSoloWhiteBlocks(input) * 4;
 
     return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
