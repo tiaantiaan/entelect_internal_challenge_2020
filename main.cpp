@@ -33,6 +33,8 @@ public:
     int rotation;
     std::vector<Cell> cells;
 
+    Shape() = default;
+
     Shape(int id2, int num, int rot) {
         id = id2;
         numAvailable = num;
@@ -55,6 +57,21 @@ public:
     int numBLockedCells;
     std::vector<Cell> blockedCells;
     std::vector<Shape> shapes;
+};
+
+class PlacedShape {
+public:
+    int id;
+    int row;
+    int col;
+    int rotation;
+
+    PlacedShape(int id2, int r, int c, int rot) {
+        id = id2;
+        row = r;
+        col = c;
+        rotation = rot;
+    };
 };
 
 
@@ -102,20 +119,20 @@ std::vector<Shape> getShapes() {
             Shape(1, 0, 3, {Cell(0, 0), Cell(1, 1), Cell(0, 1)}),
             Shape(1, 0, 4, {Cell(0, 0), Cell(1, 0), Cell(0, 1)}),
 
-            Shape(2, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 0)}),
-            Shape(2, 0, 2, {Cell(0, 0), Cell(11, 0), Cell(12, 0), Cell(12, 1)}),
-            Shape(2, 0, 3, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(11, 2)}),
-            Shape(2, 0, 4, {Cell(0, 2), Cell(11, 2), Cell(10, 1), Cell(12, 2)}),
+            Shape(2, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 0)}),
+            Shape(2, 0, 2, {Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(2, 1)}),
+            Shape(2, 0, 3, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 2)}),
+            Shape(2, 0, 4, {Cell(0, 2), Cell(1, 2), Cell(0, 1), Cell(2, 2)}),
 
-            Shape(3, 0, 1, {Cell(0, 2), Cell(10, 1), Cell(11, 1), Cell(11, 0)}),
-            Shape(3, 0, 2, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(12, 1)}),
-            Shape(3, 0, 3, {Cell(0, 2), Cell(10, 1), Cell(11, 1), Cell(11, 0)}),
-            Shape(3, 0, 4, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(12, 1)}),
+            Shape(3, 0, 1, {Cell(0, 2), Cell(0, 1), Cell(11, 1), Cell(1, 0)}),
+            Shape(3, 0, 2, {Cell(0, 0), Cell(1, 0), Cell(11, 1), Cell(2, 1)}),
+            Shape(3, 0, 3, {Cell(0, 2), Cell(0, 1), Cell(11, 1), Cell(1, 0)}),
+            Shape(3, 0, 4, {Cell(0, 0), Cell(1, 0), Cell(11, 1), Cell(2, 1)}),
 
-            Shape(4, 0, 1, {Cell(0, 1), Cell(10, 0), Cell(11, 0), Cell(12, 0), Cell(13, 0), Cell(12, 1)}),
-            Shape(4, 0, 2, {Cell(3, 0), Cell(13, 1), Cell(13, 2), Cell(13, 3), Cell(12, 0), Cell(12, 2)}),
-            Shape(4, 0, 3, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(10, 3), Cell(11, 0), Cell(11, 2)}),
-            Shape(4, 0, 4, {Cell(1, 2), Cell(13, 2), Cell(10, 3), Cell(11, 3), Cell(12, 3), Cell(13, 3)}),
+            Shape(4, 0, 1, {Cell(0, 1), Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(3, 0), Cell(2, 1)}),
+            Shape(4, 0, 2, {Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3), Cell(2, 0), Cell(2, 2)}),
+            Shape(4, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(0, 3), Cell(1, 0), Cell(1, 2)}),
+            Shape(4, 0, 4, {Cell(1, 2), Cell(3, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3), Cell(3, 3)}),
 
             Shape(5, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 0), Cell(12, 0), Cell(13, 0)}),
             Shape(5, 0, 2, {Cell(1, 0), Cell(12, 0), Cell(13, 0), Cell(13, 1), Cell(13, 2), Cell(13, 3)}),
@@ -227,7 +244,22 @@ std::vector<Shape> getShapes() {
 }
 
 Shape getShapeWithRotation(int id, int rotation) {
-    getShapes();
+    std::vector<Shape> allShapes = getShapes();
+
+    Shape result;
+    bool found = false;
+
+    for (int i = 0; i < allShapes.size(); ++i) {
+        if (allShapes[i].id == id && allShapes[i].rotation == rotation) {
+            result = allShapes[i];
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        throw "SHAPE NOT FOUND!!!!";
+    }
+    return result;
 }
 
 Input getInput(const std::string &filename);
@@ -241,15 +273,103 @@ std::vector<std::string> split(const std::string &s, char delimiter) {
     }
     return tokens;
 }
+std::string generateOutputString(const Input &input) {
+    std::string output = "";
+
+    for (int i = 0; i < input.shapes.size(); ++i) {
+        Shape shape = input.shapes[i];
+        output += std::to_string(shape.id) + "|";
+        for (int j = 0; j < shape.cells.size(); ++j) {
+            output += std::to_string(shape.cells[j].row) + "," + std::to_string(shape.cells[j].col);
+            if (j < shape.cells.size() -1) {
+                output += "|";
+            }
+        }
+        output += "\n";
+    }
+
+    return output;
+}
+
+
+Input populateInput(Input input) {
+
+    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 0, 0, 1), PlacedShape(2, 0, 0, 1)};
+
+    std::vector<Shape> shapes;
+
+    for (int i = 0; i < placedShapes.size(); ++i) {
+        Shape shape = Shape(placedShapes[i].id, 0, placedShapes[i].rotation);
+        Shape unitShape = getShapeWithRotation(placedShapes[i].id, placedShapes[i].rotation);
+        std::vector<Cell> cells;
+        for (int j = 0; j < unitShape.cells.size(); ++j) {
+            Cell cell = Cell(unitShape.cells[j].row + placedShapes[i].row,
+                             unitShape.cells[j].col + placedShapes[i].col);
+            cells.push_back(cell);
+        }
+        shape.cells = cells;
+
+        shapes.push_back(shape);
+    }
+
+    // populate input.shapes
+    input.shapes = shapes;
+
+    return input;
+}
 
 int main() {
-    getShapes();
+//    Shape testShape = getShapeWithRotation(1, 1);
+//    Shape testShape2 = getShapeWithRotation(2, 1);
+//    Shape testShape3 = getShapeWithRotation(3, 1);
 
-
+    // Get input
     Input input = getInput("documents/map_1.input");
+    Input populatedInput = getInput("documents/map_1.input");
 
-    std::cout << input.numBLockedCells;
+    // Populate Input.shapes
+    Input validPopulatedInput = populateInput(populatedInput);
 
+    // Calculate score
+
+
+    //    OUtput
+
+    //todo delete test junk
+    Input test;
+
+    std::vector<Cell> cells1;
+    cells1.push_back(Cell(0,2));
+    cells1.push_back(Cell(0,3));
+    cells1.push_back(Cell(1,3));
+
+    std::vector<Cell> cells2;
+    cells2.push_back(Cell(2,5));
+    cells2.push_back(Cell(3,5));
+    cells2.push_back(Cell(3,6));
+    cells2.push_back(Cell(4,6));
+
+    test.shapes.push_back(Shape(1, 1, 0, cells1));
+    test.shapes.push_back(Shape(3, 1, 0, cells2));
+
+    std::cout << generateOutputString(test);
+
+
+    for (int i = 0; i < validPopulatedInput.shapes.size(); ++i) {
+        std::cout << "ID: ";
+        std::cout << validPopulatedInput.shapes[i].id;
+        for (int j = 0; j < validPopulatedInput.shapes[i].cells.size(); ++j) {
+            std::cout << "(";
+
+            std::cout << validPopulatedInput.shapes[i].cells[j].row;
+
+            std::cout << ",";
+            std::cout << validPopulatedInput.shapes[i].cells[j].col;
+            std::cout << ")";
+            std::cout << "\n";
+
+        }
+    }
 
     return 0;
 }
@@ -377,3 +497,4 @@ int calculateScore(const Input &input) {
 
     return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
+
