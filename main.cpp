@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <math.h>
 //#include "ortools/linear_solver/linear_solver.h"
 
 class Cell {
@@ -66,9 +67,11 @@ int numberOfSoloWhiteBlocks(std::vector<Shape> shapes) {
 }
 
 int calculateScore(Input input) {
-
+    int totalCapacity = input.dimCol * input.dimRow;
     int score = numberOfFilledCells(input.shapes) * 10;
     score -= numberOfEmptyGroupings(input.shapes) * 2;
     score -= numberOfSoloWhiteBlocks(input.shapes) * 4;
+
+    return floor(totalCapacity/numberOfFilledCells(input.shapes) * score);
 }
 
