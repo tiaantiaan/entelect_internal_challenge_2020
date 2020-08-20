@@ -5,8 +5,9 @@
 //#include "ortools/linear_solver/linear_solver.h"
 
 class Cell {
-    int row;
+public:
     int col;
+    int row;
 };
 
 class Shape {
@@ -27,12 +28,19 @@ public:
 };
 
 class Output {
+public:
     std::vector<Shape> shapes;
 };
 
 
 
 int main() {
+//    operations_research::SimpleLpProgram();
+
+    Shape shape;
+    Cell cell;
+    shape.id = 1;
+    cell.row = 0;
 
     std::cout << "Hello, World!" << std::endl;
     std::ifstream file("documents/map_1.input");
