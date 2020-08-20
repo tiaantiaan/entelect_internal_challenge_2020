@@ -7,11 +7,14 @@
 
 class Cell {
 public:
+    Cell() = default;
+
     Cell(int c, int r, int val) {
         col = c;
         row = r;
         value = val;
     }
+
     int col;
     int row;
     int value;
@@ -37,7 +40,7 @@ public:
 
 class Board {
 public:
-    explicit Board(const Input& input) {
+    explicit Board(const Input &input) {
         for (int k = 0; k < input.dimRow; ++k) {
             std::vector<Cell> bob;
             for (int i = 0; i < input.dimCol; ++i) {
@@ -93,7 +96,9 @@ int numberOfFilledCells(const std::vector<Shape> &shapes) {
 
 
 bool isNewWhiteCell(int i, int j, Board board, std::vector<Cell> foundCells) {
-    return true;
+    if (foundCells.empty())
+        return true;
+    return false;
 }
 
 //count number of individual empty groups
@@ -104,8 +109,8 @@ int numberOfEmptyGroupings(const Input &input) {
 
     for (int i = 0; i < input.dimCol; ++i) {
         for (int j = 0; j < input.dimRow; ++j) {
-            if(board.boardCells[i][j].value == -1) {
-                if(isNewWhiteCell(i, j, board, foundCells)){
+            if (board.boardCells[i][j].value == -1) {
+                if (isNewWhiteCell(i, j, board, foundCells)) {
                     foundCells.push_back(board.boardCells[i][j]);
                 }
             }
@@ -115,9 +120,6 @@ int numberOfEmptyGroupings(const Input &input) {
     return foundCells.size();
 
 }
-
-
-
 
 int numberOfSoloWhiteBlocks(const std::vector<Shape> &shapes) {
 
