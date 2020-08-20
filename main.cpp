@@ -8,6 +8,10 @@ class Cell {
 public:
     int col;
     int row;
+    Cell(int r, int c) {
+        row = r;
+        col = c;
+    }
 };
 
 class Shape {
@@ -15,6 +19,16 @@ public:
     int id;
     int numAvailable;
     std::vector<Cell> cells;
+    Shape(int id2, int num) {
+        id = id2;
+        numAvailable = num;
+    }
+
+    Shape(int id2, int num, std::vector<Cell> cells2) {
+        id = id2;
+        numAvailable = num;
+        cells = cells2;
+    }
 };
 
 class Input {
@@ -35,12 +49,10 @@ public:
 
 
 int main() {
-//    operations_research::SimpleLpProgram();
 
-    Shape shape;
-    Cell cell;
-    shape.id = 1;
-    cell.row = 0;
+
+
+
 
     std::cout << "Hello, World!" << std::endl;
     std::ifstream file("documents/map_1.input");
