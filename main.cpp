@@ -53,21 +53,24 @@ int main() {
 
 
 //count number of filled cells
-int numberOfFilledCells(std::vector<Shape> shapes) {
-    int numberOfFillledCells = 0;
-    for (int i = 0; i < shapes.size(); ++i) {
-        numberOfFillledCells += shapes[i].cells.size();
+int numberOfFilledCells(const std::vector<Shape>& shapes) {
+    int numberOfFilledCells = 0;
+    for (auto & shape : shapes) {
+        numberOfFilledCells += shape.cells.size();
     }
 
-    return numberOfFillledCells;
+    return numberOfFilledCells;
 }
 
 //count number of individual empty groups
-int numberOfEmptyGroupings(std::vector<Shape> shapes) {
-
+int numberOfEmptyGroupings(const std::vector<Shape>& shapes) {
+    int numberOfFilledCells = 0;
+    for (auto & shape : shapes) {
+        numberOfFilledCells += shape.cells.size();
+    }
 }
 
-int numberOfSoloWhiteBlocks(std::vector<Shape> shapes) {
+int numberOfSoloWhiteBlocks(const std::vector<Shape>& shapes) {
 
 }
 
