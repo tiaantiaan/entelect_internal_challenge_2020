@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 //#include "ortools/linear_solver/linear_solver.h"
 
 class Cell {
@@ -8,15 +9,11 @@ class Cell {
     int y;
 };
 
-class Cells {
-    Cell cells[];
-};
-
 class Shape {
 public:
     int id;
     int numAvailable;
-    Cells cells;
+    std::vector<Cell> cells;
 };
 class Input {
 public:
@@ -24,12 +21,12 @@ public:
     int dimY;
     int numShapes;
     int numBLockedCells;
-    Cells blockedCells;
-    Shape shapes[];
+    std::vector<Cell> blockedCells;
+    std::vector<Shape> shapes;
 };
 
 class Output {
-    Shape shapes[];
+    std::vector<Shape> shapes;
 };
 
 
@@ -38,7 +35,7 @@ int main() {
 //    operations_research::SimpleLpProgram();
 
     std::cout << "Hello, World!" << std::endl;
-    std::ifstream file("input.txt");
+    std::ifstream file("documents/map_1.input");
     std::string str;
     while (std::getline(file, str)) {
         std::cout << str << "\n";
