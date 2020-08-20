@@ -127,120 +127,120 @@ std::vector<Shape> getShapes() {
             Shape(2, 0, 3, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 2)}),
             Shape(2, 0, 4, {Cell(0, 2), Cell(1, 2), Cell(0, 1), Cell(2, 2)}),
 
-            Shape(3, 0, 1, {Cell(0, 2), Cell(0, 1), Cell(11, 1), Cell(1, 0)}),
-            Shape(3, 0, 2, {Cell(0, 0), Cell(1, 0), Cell(11, 1), Cell(2, 1)}),
-            Shape(3, 0, 3, {Cell(0, 2), Cell(0, 1), Cell(11, 1), Cell(1, 0)}),
-            Shape(3, 0, 4, {Cell(0, 0), Cell(1, 0), Cell(11, 1), Cell(2, 1)}),
+            Shape(3, 0, 1, {Cell(0, 2), Cell(0, 1), Cell(1, 1), Cell(1, 0)}),
+            Shape(3, 0, 2, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(2, 1)}),
+            Shape(3, 0, 3, {Cell(0, 2), Cell(0, 1), Cell(1, 1), Cell(1, 0)}),
+            Shape(3, 0, 4, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(2, 1)}),
 
             Shape(4, 0, 1, {Cell(0, 1), Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(3, 0), Cell(2, 1)}),
             Shape(4, 0, 2, {Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3), Cell(2, 0), Cell(2, 2)}),
             Shape(4, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(0, 3), Cell(1, 0), Cell(1, 2)}),
             Shape(4, 0, 4, {Cell(1, 2), Cell(3, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3), Cell(3, 3)}),
 
-            Shape(5, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 0), Cell(12, 0), Cell(13, 0)}),
-            Shape(5, 0, 2, {Cell(1, 0), Cell(12, 0), Cell(13, 0), Cell(13, 1), Cell(13, 2), Cell(13, 3)}),
-            Shape(5, 0, 3, {Cell(3, 1), Cell(13, 2), Cell(13, 3), Cell(12, 3), Cell(11, 3), Cell(10, 3)}),
-            Shape(5, 0, 4, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(10, 3), Cell(11, 3), Cell(12, 3)}),
+            Shape(5, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(0, 2), Cell(1, 0), Cell(2, 0), Cell(3, 0)}),
+            Shape(5, 0, 2, {Cell(1, 0), Cell(2, 0), Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3)}),
+            Shape(5, 0, 3, {Cell(3, 1), Cell(3, 2), Cell(3, 3), Cell(2, 3), Cell(1, 3), Cell(0, 3)}),
+            Shape(5, 0, 4, {Cell(0, 0), Cell(10, 1), Cell(0, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3)}),
 
-            Shape(6, 0, 1, {Cell(0, 0), Cell(11, 0)}),
-            Shape(6, 0, 2, {Cell(1, 0), Cell(11, 1)}),
-            Shape(6, 0, 3, {Cell(1, 1), Cell(10, 1)}),
-            Shape(6, 0, 4, {Cell(0, 1), Cell(10, 0)}),
+            Shape(6, 0, 1, {Cell(0, 0), Cell(1, 0)}),
+            Shape(6, 0, 2, {Cell(1, 0), Cell(1, 1)}),
+            Shape(6, 0, 3, {Cell(1, 1), Cell(0, 1)}),
+            Shape(6, 0, 4, {Cell(0, 1), Cell(0, 0)}),
 
-            Shape(7, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(12, 0), Cell(13, 0)}),
-            Shape(7, 0, 2, {Cell(3, 0), Cell(13, 1), Cell(13, 2), Cell(13, 3)}),
-            Shape(7, 0, 3, {Cell(2, 3), Cell(11, 3), Cell(13, 3), Cell(10, 3)}),
-            Shape(7, 0, 4, {Cell(0, 3), Cell(10, 2), Cell(10, 1), Cell(10, 0)}),
+            Shape(7, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(3, 0)}),
+            Shape(7, 0, 2, {Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3)}),
+            Shape(7, 0, 3, {Cell(2, 3), Cell(1, 3), Cell(3, 3), Cell(0, 3)}),
+            Shape(7, 0, 4, {Cell(0, 3), Cell(0, 2), Cell(0, 1), Cell(0, 0)}),
 
-            Shape(8, 0, 1, {Cell(3, 0), Cell(13, 1), Cell(13, 2), Cell(12, 2), Cell(12, 3)}),
-            Shape(8, 0, 2, {Cell(3, 2), Cell(12, 2), Cell(11, 2), Cell(11, 3), Cell(10, 3)}),
-            Shape(8, 0, 3, {Cell(0, 1), Cell(10, 2), Cell(10, 3), Cell(11, 0), Cell(11, 1)}),
-            Shape(8, 0, 4, {Cell(0, 0), Cell(11, 0), Cell(12, 0), Cell(12, 1), Cell(13, 1)}),
+            Shape(8, 0, 1, {Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(2, 2), Cell(2, 3)}),
+            Shape(8, 0, 2, {Cell(3, 2), Cell(2, 2), Cell(1, 2), Cell(1, 3), Cell(0, 3)}),
+            Shape(8, 0, 3, {Cell(0, 1), Cell(0, 2), Cell(0, 3), Cell(1, 0), Cell(1, 1)}),
+            Shape(8, 0, 4, {Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(2, 1), Cell(3, 1)}),
 
-            Shape(9, 0, 1, {Cell(0, 1), Cell(11, 2), Cell(11, 1), Cell(12, 1), Cell(11, 0)}),
-            Shape(9, 0, 2, {Cell(2, 1), Cell(10, 1), Cell(11, 2), Cell(11, 1), Cell(11, 0)}),
-            Shape(9, 0, 3, {Cell(1, 0), Cell(11, 1), Cell(11, 2), Cell(10, 1), Cell(12, 1)}),
-            Shape(9, 0, 4, {Cell(1, 2), Cell(12, 1), Cell(11, 1), Cell(11, 0), Cell(10, 1)}),
+            Shape(9, 0, 1, {Cell(0, 1), Cell(1, 2), Cell(1, 1), Cell(2, 1), Cell(1, 0)}),
+            Shape(9, 0, 2, {Cell(2, 1), Cell(0, 1), Cell(1, 2), Cell(1, 1), Cell(1, 0)}),
+            Shape(9, 0, 3, {Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(0, 1), Cell(2, 1)}),
+            Shape(9, 0, 4, {Cell(1, 2), Cell(2, 1), Cell(1, 1), Cell(1, 0), Cell(0, 1)}),
 
-            Shape(10, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(10, 2), Cell(11, 2)}),
-            Shape(10, 0, 2, {Cell(0, 1), Cell(10, 0), Cell(11, 0), Cell(12, 0), Cell(12, 1)}),
-            Shape(10, 0, 3, {Cell(0, 0), Cell(11, 0), Cell(10, 1), Cell(10, 2), Cell(11, 2)}),
-            Shape(10, 0, 4, {Cell(0, 1), Cell(10, 2), Cell(11, 2), Cell(12, 2), Cell(12, 1)}),
+            Shape(10, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(0, 2), Cell(1, 2)}),
+            Shape(10, 0, 2, {Cell(0, 1), Cell(0, 0), Cell(1, 0), Cell(2, 0), Cell(2, 1)}),
+            Shape(10, 0, 3, {Cell(0, 0), Cell(1, 0), Cell(0, 1), Cell(0, 2), Cell(1, 2)}),
+            Shape(10, 0, 4, {Cell(0, 1), Cell(0, 2), Cell(1, 2), Cell(2, 2), Cell(2, 1)}),
 
-            Shape(11, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(12, 0)}),
-            Shape(11, 0, 2, {Cell(2, 0), Cell(12, 1), Cell(12, 2)}),
-            Shape(11, 0, 3, {Cell(2, 2), Cell(10, 2), Cell(11, 2)}),
-            Shape(11, 0, 4, {Cell(0, 1), Cell(10, 2), Cell(10, 0)}),
+            Shape(11, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(2, 0)}),
+            Shape(11, 0, 2, {Cell(2, 0), Cell(2, 1), Cell(2, 2)}),
+            Shape(11, 0, 3, {Cell(2, 2), Cell(0, 2), Cell(1, 2)}),
+            Shape(11, 0, 4, {Cell(0, 1), Cell(0, 2), Cell(0, 0)}),
 
-            Shape(12, 0, 1, {Cell(2, 0), Cell(12, 1), Cell(11, 1), Cell(11, 2), Cell(10, 2)}),
-            Shape(12, 0, 2, {Cell(2, 0), Cell(11, 0), Cell(11, 1), Cell(10, 1), Cell(10, 2)}),
-            Shape(12, 0, 3, {Cell(0, 0), Cell(10, 1), Cell(11, 1), Cell(11, 2), Cell(12, 2)}),
-            Shape(12, 0, 4, {Cell(2, 1), Cell(12, 2), Cell(11, 0), Cell(11, 1), Cell(10, 0)}),
+            Shape(12, 0, 1, {Cell(2, 0), Cell(2, 1), Cell(1, 1), Cell(1, 2), Cell(10, 2)}),
+            Shape(12, 0, 2, {Cell(2, 0), Cell(1, 0), Cell(1, 1), Cell(0, 1), Cell(10, 2)}),
+            Shape(12, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(1, 1), Cell(1, 2), Cell(2, 2)}),
+            Shape(12, 0, 4, {Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 1), Cell(0, 0)}),
 
-            Shape(13, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(12, 1), Cell(11, 2)}),
-            Shape(13, 0, 2, {Cell(2, 0), Cell(12, 1), Cell(11, 1), Cell(11, 2), Cell(10, 1)}),
-            Shape(13, 0, 3, {Cell(1, 0), Cell(11, 1), Cell(11, 2), Cell(10, 1), Cell(12, 2)}),
-            Shape(13, 0, 4, {Cell(0, 1), Cell(10, 2), Cell(11, 0), Cell(11, 1), Cell(12, 1)}),
+            Shape(13, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(2, 1), Cell(1, 2)}),
+            Shape(13, 0, 2, {Cell(2, 0), Cell(2, 1), Cell(1, 1), Cell(1, 2), Cell(0, 1)}),
+            Shape(13, 0, 3, {Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(0, 1), Cell(2, 2)}),
+            Shape(13, 0, 4, {Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 1), Cell(2, 1)}),
 
-            Shape(14, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 1), Cell(11, 2)}),
-            Shape(14, 0, 2, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(11, 1), Cell(12, 0)}),
-            Shape(14, 0, 3, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(11, 1), Cell(11, 2)}),
-            Shape(14, 0, 4, {Cell(2, 1), Cell(12, 2), Cell(11, 1), Cell(11, 2), Cell(10, 2)}),
+            Shape(14, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 1), Cell(1, 2)}),
+            Shape(14, 0, 2, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(1, 1), Cell(2, 0)}),
+            Shape(14, 0, 3, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 1), Cell(1, 2)}),
+            Shape(14, 0, 4, {Cell(2, 1), Cell(2, 2), Cell(1, 1), Cell(1, 2), Cell(0, 2)}),
 
-            Shape(15, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(11, 2), Cell(12, 0), Cell(12, 1)}),
-            Shape(15, 0, 2, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(11, 0), Cell(11, 2), Cell(10, 1)}),
-            Shape(15, 0, 3, {Cell(2, 1), Cell(12, 2), Cell(10, 1), Cell(10, 2), Cell(11, 0), Cell(11, 2)}),
-            Shape(15, 0, 4, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 0), Cell(11, 2), Cell(12, 1)}),
+            Shape(15, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(1, 2), Cell(2, 0), Cell(2, 1)}),
+            Shape(15, 0, 2, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 2), Cell(10, 1)}),
+            Shape(15, 0, 3, {Cell(2, 1), Cell(2, 2), Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 2)}),
+            Shape(15, 0, 4, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 2), Cell(2, 1)}),
 
-            Shape(16, 0, 1, {Cell(0, 1), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(12, 0), Cell(12, 1)}),
-            Shape(16, 0, 2, {Cell(0, 1), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(12, 1), Cell(12, 2)}),
-            Shape(16, 0, 3, {Cell(0, 1), Cell(10, 2), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(12, 1)}),
-            Shape(16, 0, 4, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(12, 1)}),
+            Shape(16, 0, 1, {Cell(0, 1), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(2, 0), Cell(2, 1)}),
+            Shape(16, 0, 2, {Cell(0, 1), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(2, 1), Cell(2, 2)}),
+            Shape(16, 0, 3, {Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(2, 1)}),
+            Shape(16, 0, 4, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(2, 1)}),
 
-            Shape(17, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(11, 1)}),
-            Shape(17, 0, 2, {Cell(1, 0), Cell(10, 0), Cell(11, 1), Cell(10, 1)}),
-            Shape(17, 0, 3, {Cell(1, 1), Cell(10, 1), Cell(11, 0), Cell(10, 0)}),
-            Shape(17, 0, 4, {Cell(1, 0), Cell(10, 1), Cell(10, 0), Cell(11, 1)}),
+            Shape(17, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(1, 1)}),
+            Shape(17, 0, 2, {Cell(1, 0), Cell(0, 0), Cell(1, 1), Cell(0, 1)}),
+            Shape(17, 0, 3, {Cell(1, 1), Cell(0, 1), Cell(1, 0), Cell(0, 0)}),
+            Shape(17, 0, 4, {Cell(1, 0), Cell(0, 1), Cell(0, 0), Cell(1, 1)}),
 
-            Shape(18, 0, 1, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 1), Cell(12, 1)}),
-            Shape(18, 0, 2, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(12, 0)}),
-            Shape(18, 0, 3, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(11, 1), Cell(10, 1)}),
-            Shape(18, 0, 4, {Cell(2, 2), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(10, 2)}),
+            Shape(18, 0, 1, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 1), Cell(2, 1)}),
+            Shape(18, 0, 2, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(2, 0)}),
+            Shape(18, 0, 3, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 1), Cell(0, 1)}),
+            Shape(18, 0, 4, {Cell(2, 2), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(0, 2)}),
 
-            Shape(19, 0, 1, {Cell(0, 2), Cell(11, 1), Cell(11, 2), Cell(12, 0), Cell(12, 1), Cell(12, 2)}),
-            Shape(19, 0, 2, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 1), Cell(11, 2), Cell(12, 2)}),
-            Shape(19, 0, 3, {Cell(0, 0), Cell(10, 1), Cell(10, 2), Cell(11, 0), Cell(11, 1), Cell(12, 0)}),
-            Shape(19, 0, 4, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(11, 0), Cell(11, 1), Cell(10, 0)}),
+            Shape(19, 0, 1, {Cell(0, 2), Cell(1, 1), Cell(1, 2), Cell(2, 0), Cell(2, 1), Cell(2, 2)}),
+            Shape(19, 0, 2, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 1), Cell(1, 2), Cell(2, 2)}),
+            Shape(19, 0, 3, {Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(1, 1), Cell(2, 0)}),
+            Shape(19, 0, 4, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(1, 0), Cell(1, 1), Cell(0, 0)}),
 
-            Shape(20, 0, 1, {Cell(0, 1), Cell(11, 0), Cell(12, 0), Cell(12, 1), Cell(12, 2), Cell(13, 0), Cell(13, 2)}),
-            Shape(20, 0, 2, {Cell(2, 0), Cell(13, 1), Cell(13, 2), Cell(13, 3), Cell(11, 2), Cell(11, 3), Cell(12, 2)}),
-            Shape(20, 0, 3, {Cell(3, 2), Cell(12, 3), Cell(11, 1), Cell(11, 2), Cell(11, 3), Cell(10, 3), Cell(10, 1)}),
-            Shape(20, 0, 4, {Cell(1, 3), Cell(10, 0), Cell(10, 1), Cell(10, 2), Cell(12, 0), Cell(12, 1), Cell(11, 1)}),
+            Shape(20, 0, 1, {Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(3, 0), Cell(3, 2)}),
+            Shape(20, 0, 2, {Cell(2, 0), Cell(3, 1), Cell(3, 2), Cell(3, 3), Cell(1, 2), Cell(1, 3), Cell(2, 2)}),
+            Shape(20, 0, 3, {Cell(3, 2), Cell(2, 3), Cell(1, 1), Cell(1, 2), Cell(1, 3), Cell(0, 3), Cell(0, 1)}),
+            Shape(20, 0, 4, {Cell(1, 3), Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(2, 0), Cell(2, 1), Cell(1, 1)}),
 
-            Shape(21, 0, 1, {Cell(0, 1), Cell(11, 2), Cell(12, 1), Cell(11, 0)}),
-            Shape(21, 0, 2, {Cell(2, 1), Cell(10, 1), Cell(11, 2), Cell(11, 0)}),
-            Shape(21, 0, 3, {Cell(1, 0), Cell(11, 2), Cell(10, 1), Cell(12, 1)}),
-            Shape(21, 0, 4, {Cell(1, 2), Cell(12, 1), Cell(11, 0), Cell(10, 1)}),
+            Shape(21, 0, 1, {Cell(0, 1), Cell(1, 2), Cell(2, 1), Cell(1, 0)}),
+            Shape(21, 0, 2, {Cell(2, 1), Cell(0, 1), Cell(1, 2), Cell(1, 0)}),
+            Shape(21, 0, 3, {Cell(1, 0), Cell(1, 2), Cell(0, 1), Cell(2, 1)}),
+            Shape(21, 0, 4, {Cell(1, 2), Cell(2, 1), Cell(1, 0), Cell(0, 1)}),
 
-            Shape(22, 0, 1, {Cell(1, 0), Cell(11, 1), Cell(10, 1), Cell(10, 2), Cell(10, 3), Cell(11, 3)}),
-            Shape(22, 0, 2, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(12, 0), Cell(12, 1), Cell(13, 1)}),
-            Shape(22, 0, 3, {Cell(2, 0), Cell(13, 0), Cell(13, 1), Cell(13, 2), Cell(12, 2), Cell(12, 3)}),
-            Shape(22, 0, 4, {Cell(0, 2), Cell(10, 3), Cell(11, 2), Cell(12, 2), Cell(12, 3), Cell(13, 3)}),
+            Shape(22, 0, 1, {Cell(1, 0), Cell(1, 1), Cell(0, 1), Cell(0, 2), Cell(0, 3), Cell(1, 3)}),
+            Shape(22, 0, 2, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(2, 1), Cell(3, 1)}),
+            Shape(22, 0, 3, {Cell(2, 0), Cell(3, 0), Cell(3, 1), Cell(3, 2), Cell(2, 2), Cell(2, 3)}),
+            Shape(22, 0, 4, {Cell(0, 2), Cell(0, 3), Cell(1, 2), Cell(2, 2), Cell(2, 3), Cell(3, 3)}),
 
-            Shape(23, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(11, 1), Cell(11, 2), Cell(11, 3), Cell(10, 3)}),
-            Shape(23, 0, 2, {Cell(0, 0), Cell(10, 1), Cell(11, 0), Cell(12, 0), Cell(13, 0), Cell(13, 1)}),
-            Shape(23, 0, 3, {Cell(0, 2), Cell(10, 3), Cell(11, 3), Cell(12, 3), Cell(13, 2), Cell(13, 3)}),
-            Shape(23, 0, 4, {Cell(2, 0), Cell(12, 1), Cell(12, 2), Cell(12, 3), Cell(13, 0), Cell(13, 3)}),
+            Shape(23, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(1, 1), Cell(1, 2), Cell(1, 3), Cell(0, 3)}),
+            Shape(23, 0, 2, {Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(3, 0), Cell(3, 1)}),
+            Shape(23, 0, 3, {Cell(0, 2), Cell(0, 3), Cell(1, 3), Cell(2, 3), Cell(3, 2), Cell(3, 3)}),
+            Shape(23, 0, 4, {Cell(2, 0), Cell(2, 1), Cell(2, 2), Cell(2, 3), Cell(3, 0), Cell(3, 3)}),
 
             Shape(24, 0, 1, {Cell(0, 0)}),
             Shape(24, 0, 2, {Cell(0, 0)}),
             Shape(24, 0, 3, {Cell(0, 0)}),
             Shape(24, 0, 4, {Cell(0, 0)}),
 
-            Shape(25, 0, 1, {Cell(0, 0), Cell(11, 0), Cell(12, 1), Cell(11, 2), Cell(12, 3), Cell(11, 4), Cell(10, 4)}),
-            Shape(25, 0, 2, {Cell(4, 0), Cell(13, 0), Cell(12, 1), Cell(13, 2), Cell(12, 3), Cell(13, 4), Cell(14, 4)}),
-            Shape(25, 0, 3, {Cell(0, 1), Cell(10, 2), Cell(11, 0), Cell(12, 1), Cell(13, 0), Cell(14, 1), Cell(14, 2)}),
-            Shape(25, 0, 4, {Cell(0, 2), Cell(10, 3), Cell(11, 4), Cell(12, 3), Cell(13, 4), Cell(14, 2), Cell(14, 3)})
+            Shape(25, 0, 1, {Cell(0, 0), Cell(1, 0), Cell(2, 1), Cell(1, 2), Cell(2, 3), Cell(1, 4), Cell(0, 4)}),
+            Shape(25, 0, 2, {Cell(4, 0), Cell(3, 0), Cell(2, 1), Cell(3, 2), Cell(2, 3), Cell(3, 4), Cell(4, 4)}),
+            Shape(25, 0, 3, {Cell(0, 1), Cell(0, 2), Cell(1, 0), Cell(2, 1), Cell(3, 0), Cell(4, 1), Cell(4, 2)}),
+            Shape(25, 0, 4, {Cell(0, 2), Cell(0, 3), Cell(1, 4), Cell(2, 3), Cell(3, 4), Cell(4, 2), Cell(4, 3)})
     };
 
     return shapes;
@@ -329,87 +329,11 @@ int getRandomValue(int min, int max) {
 }
 
 int getRandomIdFromInput(Input input) {
-    int index = getRandomValue(0, input.numShapes);
+    int index = getRandomValue(1, input.numShapes-1);
     return input.shapes[index].id;
 
 }
 
-
-int main() {
-
-    // Get input
-    Input input = getInput("documents/map_1.input");
-    Input populatedInput = getInput("documents/map_1.input");
-
-    // Populate Input.shapes
-
-    int numberOfPieces = 5;
-
-    std::vector<PlacedShape> placedShapes;
-
-    for (int i = 0; i < numberOfPieces; ++i) {
-        int id = getRandomIdFromInput(input);
-        int rotation = getRandomValue(1, 4);
-        int row = getRandomValue(1, input.dimRow);
-        int col = getRandomValue(1, input.dimCol);
-//        int row = getRandomValue(1, input.dimRow);
-//        int col = getRandomValue(1, input.dimCol);
-
-        placedShapes.push_back(PlacedShape(id, row, col, rotation));
-
-    }
-
-
-//    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 20, 0, 1), PlacedShape(2, 10, 0, 1)};
-    Input validPopulatedInput = populateInput(populatedInput, placedShapes);
-
-    // Calculate score
-
-
-    //    OUtput
-
-    //todo delete test junk
-    Input test;
-
-    std::vector<Cell> cells1;
-    cells1.push_back(Cell(0, 2));
-    cells1.push_back(Cell(0, 3));
-    cells1.push_back(Cell(1, 3));
-
-    std::vector<Cell> cells2;
-    cells2.push_back(Cell(2, 5));
-    cells2.push_back(Cell(3, 5));
-    cells2.push_back(Cell(3, 6));
-    cells2.push_back(Cell(4, 6));
-
-    test.shapes.push_back(Shape(1, 1, 0, cells1));
-    test.shapes.push_back(Shape(3, 1, 0, cells2));
-
-    std::cout << generateOutputString(validPopulatedInput);
-
-
-    //todo delete test junk
-    std::cout << "---------------------------\n";
-    for (int i = 0; i < validPopulatedInput.shapes.size(); ++i) {
-        std::cout << "ID: ";
-        std::cout << validPopulatedInput.shapes[i].id;
-        for (int j = 0; j < validPopulatedInput.shapes[i].cells.size(); ++j) {
-            std::cout << "(";
-
-            std::cout << validPopulatedInput.shapes[i].cells[j].row;
-
-            std::cout << ",";
-            std::cout << validPopulatedInput.shapes[i].cells[j].col;
-            std::cout << ")";
-            std::cout << "\n";
-
-        }
-    }
-    std::cout << "---------------------------\n";
-
-
-    return 0;
-}
 
 Input getInput(const std::string &filename) {
     std::ifstream file(filename);
@@ -531,4 +455,91 @@ int calculateScore(const Input &input) {
 
     return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
+
+
+int main() {
+
+    // Get input
+    Input input = getInput("documents/map_2.input");
+    Input populatedInput = getInput("documents/map_2.input");
+
+    // Populate Input.shapes
+    std::vector<PlacedShape> placedShapes;
+
+
+
+
+    int numberOfPieces = 35;
+
+    for (int i = 0; i < numberOfPieces; ++i) {
+        int id = getRandomIdFromInput(input);
+        int rotation = 1;
+        int row = getRandomValue(1, input.dimRow-10);
+        int col = getRandomValue(1, input.dimCol-10);
+//        int row = 1;
+//        int col = 4;
+
+        placedShapes.push_back(PlacedShape(id, row, col, rotation));
+    }
+
+
+//    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 20, 0, 1), PlacedShape(2, 10, 0, 1)};
+    Input validPopulatedInput = populateInput(populatedInput, placedShapes);
+
+    // Calculate score
+    int score = calculateScore(validPopulatedInput);
+
+    std::cout << "score: ";
+    std::cout << score;
+    std::cout << "\n";
+
+
+
+    //    OUtput
+
+    //todo delete test junk
+    Input test;
+
+    std::vector<Cell> cells1;
+    cells1.push_back(Cell(0, 2));
+    cells1.push_back(Cell(0, 3));
+    cells1.push_back(Cell(1, 3));
+
+    std::vector<Cell> cells2;
+    cells2.push_back(Cell(2, 5));
+    cells2.push_back(Cell(3, 5));
+    cells2.push_back(Cell(3, 6));
+    cells2.push_back(Cell(4, 6));
+
+    test.shapes.push_back(Shape(1, 1, 0, cells1));
+    test.shapes.push_back(Shape(3, 1, 0, cells2));
+
+    std::cout << generateOutputString(validPopulatedInput);
+
+
+//    //todo delete test junk
+//    std::cout << "---------------------------\n";
+//    for (int i = 0; i < validPopulatedInput.shapes.size(); ++i) {
+//        std::cout << "ID: ";
+//        std::cout << validPopulatedInput.shapes[i].id;
+//        for (int j = 0; j < validPopulatedInput.shapes[i].cells.size(); ++j) {
+//            std::cout << "(";
+//
+//            std::cout << validPopulatedInput.shapes[i].cells[j].row;
+//
+//            std::cout << ",";
+//            std::cout << validPopulatedInput.shapes[i].cells[j].col;
+//            std::cout << ")";
+//            std::cout << "\n";
+//
+//        }
+//    }
+//    std::cout << "---------------------------\n";
+
+
+    return 0;
+}
+
+
+
 
