@@ -233,6 +233,24 @@ std::vector<std::string> split(const std::string& s, char delimiter)
     }
     return tokens;
 }
+std::string generateOutputString(const Input &input) {
+    std::string output = "";
+
+    for (int i = 0; i < input.shapes.size(); ++i) {
+        Shape shape = input.shapes[i];
+        output += std::to_string(shape.id) + "|";
+        for (int j = 0; j < shape.cells.size(); ++j) {
+            output += std::to_string(shape.cells[j].row) + "," + std::to_string(shape.cells[j].col);
+            if (j < shape.cells.size() -1) {
+                output += "|";
+            }
+        }
+        output += "\n";
+    }
+
+    return output;
+}
+
 
 int main() {
     getShapes();
@@ -240,8 +258,24 @@ int main() {
 
     Input input = getInput("documents/map_1.input");
 
-    std::cout << input.numBLockedCells;
+    //todo delete test junk
+    Input test;
 
+    std::vector<Cell> cells1;
+    cells1.push_back(Cell(0,2));
+    cells1.push_back(Cell(0,3));
+    cells1.push_back(Cell(1,3));
+
+    std::vector<Cell> cells2;
+    cells2.push_back(Cell(2,5));
+    cells2.push_back(Cell(3,5));
+    cells2.push_back(Cell(3,6));
+    cells2.push_back(Cell(4,6));
+
+    test.shapes.push_back(Shape(1, 1, 0, cells1));
+    test.shapes.push_back(Shape(3, 1, 0, cells2));
+
+    std::cout << generateOutputString(test);
 
     return 0;
 }
@@ -331,3 +365,4 @@ int calculateScore(const Input &input) {
 
     return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
+
