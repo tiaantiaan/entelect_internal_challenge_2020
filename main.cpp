@@ -15,6 +15,7 @@ public:
     int numAvailable;
     std::vector<Cell> cells;
 };
+
 class Input {
 public:
     int dimX;
@@ -30,7 +31,6 @@ class Output {
 };
 
 
-
 int main() {
 //    operations_research::SimpleLpProgram();
 
@@ -42,3 +42,26 @@ int main() {
     }
     return 0;
 }
+
+
+//count number of filled cells
+int numberOfFilledCells(std::vector<Shape> shapes) {
+
+}
+
+//count number of individual empty groups
+int numberOfEmptyGroupings(std::vector<Shape> shapes) {
+
+}
+
+int numberOfSoloWhiteBlocks(std::vector<Shape> shapes) {
+
+}
+
+int calculateScore(Input input) {
+
+    int score = numberOfFilledCells(input.shapes) * 10;
+    score -= numberOfEmptyGroupings(input.shapes) * 2;
+    score -= numberOfSoloWhiteBlocks(input.shapes) * 4;
+}
+
