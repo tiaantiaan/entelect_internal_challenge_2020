@@ -257,6 +257,10 @@ Shape getShapeWithRotation(int id, int rotation) {
         }
     }
     if (!found) {
+        std::cout << "riotation: ";
+        std::cout << rotation;
+        std::cout << "id: ";
+        std::cout << id;
         throw "SHAPE NOT FOUND!!!!";
     }
     return result;
@@ -273,6 +277,7 @@ std::vector<std::string> split(const std::string &s, char delimiter) {
     }
     return tokens;
 }
+
 std::string generateOutputString(const Input &input) {
     std::string output = "";
 
@@ -281,7 +286,7 @@ std::string generateOutputString(const Input &input) {
         output += std::to_string(shape.id) + "|";
         for (int j = 0; j < shape.cells.size(); ++j) {
             output += std::to_string(shape.cells[j].row) + "," + std::to_string(shape.cells[j].col);
-            if (j < shape.cells.size() -1) {
+            if (j < shape.cells.size() - 1) {
                 output += "|";
             }
         }
@@ -292,9 +297,7 @@ std::string generateOutputString(const Input &input) {
 }
 
 
-Input populateInput(Input input) {
-
-    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 10, 20, 1), PlacedShape(2, 30, 40, 1)};
+Input populateInput(Input input, std::vector<PlacedShape> placedShapes) {
 
     std::vector<Shape> shapes;
 
@@ -318,6 +321,17 @@ Input populateInput(Input input) {
     return input;
 }
 
+int getRandomValue(int min, int max) {
+    return min + (rand() % static_cast<int>(max - min + 1));
+}
+
+int getRandomIdFromInput(Input input) {
+    int index = getRandomValue(0, input.numShapes);
+    return input.shapes[index].id;
+
+}
+
+
 int main() {
 
     // Get input
@@ -325,7 +339,26 @@ int main() {
     Input populatedInput = getInput("documents/map_1.input");
 
     // Populate Input.shapes
-    Input validPopulatedInput = populateInput(populatedInput);
+
+    int numberOfPieces = 5;
+
+    std::vector<PlacedShape> placedShapes;
+
+    for (int i = 0; i < numberOfPieces; ++i) {
+        int id = getRandomIdFromInput(input);
+        int rotation = getRandomValue(1, 4);
+        int row = getRandomValue(1, input.dimRow);
+        int col = getRandomValue(1, input.dimCol);
+//        int row = getRandomValue(1, input.dimRow);
+//        int col = getRandomValue(1, input.dimCol);
+
+        placedShapes.push_back(PlacedShape(id, row, col, rotation));
+
+    }
+
+
+//    std::vector<PlacedShape> placedShapes = {PlacedShape(1, 20, 0, 1), PlacedShape(2, 10, 0, 1)};
+    Input validPopulatedInput = populateInput(populatedInput, placedShapes);
 
     // Calculate score
 
@@ -336,20 +369,20 @@ int main() {
     Input test;
 
     std::vector<Cell> cells1;
-    cells1.push_back(Cell(0,2));
-    cells1.push_back(Cell(0,3));
-    cells1.push_back(Cell(1,3));
+    cells1.push_back(Cell(0, 2));
+    cells1.push_back(Cell(0, 3));
+    cells1.push_back(Cell(1, 3));
 
     std::vector<Cell> cells2;
-    cells2.push_back(Cell(2,5));
-    cells2.push_back(Cell(3,5));
-    cells2.push_back(Cell(3,6));
-    cells2.push_back(Cell(4,6));
+    cells2.push_back(Cell(2, 5));
+    cells2.push_back(Cell(3, 5));
+    cells2.push_back(Cell(3, 6));
+    cells2.push_back(Cell(4, 6));
 
     test.shapes.push_back(Shape(1, 1, 0, cells1));
     test.shapes.push_back(Shape(3, 1, 0, cells2));
 
-    std::cout << generateOutputString(test);
+    std::cout << generateOutputString(validPopulatedInput);
 
 
     //todo delete test junk
