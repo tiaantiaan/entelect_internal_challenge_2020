@@ -62,15 +62,23 @@ class Board {
 public:
     explicit Board(const Input &input) {
         for (int k = 0; k < input.dimRow; ++k) {
-            std::vector<Cell> bob;
+            std::vector<Cell> bob(input.dimRow);
             for (int i = 0; i < input.dimCol; ++i) {
-                bob.emplace_back(i, k, -1);
+                //Set everything to -1 White
+                bob[i] = Cell(k, i, -1);
             }
             boardCells.push_back(bob);
         }
 
+        for (auto &blockedCells : input.blockedCells) {
+            boardCells[blockedCells.col][blockedCells.row].value = -2;
+        }
+
         for (auto &shape : input.shapes) {
             for (auto &cell : shape.cells) {
+                //Trying to place ontop of previous placement OR trying to place on blocked section
+                if (boardCells[cell.col][cell.row].value != -1)
+                    baseScore = -1;
                 boardCells[cell.col][cell.row].value = cell.value;
             }
         }
@@ -78,6 +86,8 @@ public:
     }
 
     std::vector<std::vector<Cell>> boardCells;
+    //Score of the board after initial build
+    int baseScore = 0;
 };
 
 class Output {
@@ -222,13 +232,11 @@ Shape getShapeWithRotation(int id, int rotation) {
 
 Input getInput(const std::string &filename);
 
-std::vector<std::string> split(const std::string& s, char delimiter)
-{
+std::vector<std::string> split(const std::string &s, char delimiter) {
     std::vector<std::string> tokens;
     std::string token;
     std::istringstream tokenStream(s);
-    while (std::getline(tokenStream, token, delimiter))
-    {
+    while (std::getline(tokenStream, token, delimiter)) {
         tokens.push_back(token);
     }
     return tokens;
@@ -257,7 +265,7 @@ Input getInput(const std::string &filename) {
     Input input;
 
     std::string row = lines[0].substr(0, lines[0].find(','));
-    std::string col  = lines[0].substr(lines[0].find(',') + 1, lines[0].length());
+    std::string col = lines[0].substr(lines[0].find(',') + 1, lines[0].length());
 
     input.dimRow = std::stoi(row);
     input.dimCol = std::stoi(col);
@@ -267,7 +275,7 @@ Input getInput(const std::string &filename) {
 
     for (int i = 3; i < lines.size() - 1; i++) {
         std::string id = lines[i].substr(0, lines[i].find(','));
-        std::string num  = lines[i].substr(lines[i].find(',') + 1, lines[i].length());
+        std::string num = lines[i].substr(lines[i].find(',') + 1, lines[i].length());
         // todo shape cells and rot needs to come from somewhere?
         input.shapes.push_back(Shape(std::stoi(id), std::stoi(num), 0));
     }
@@ -291,12 +299,19 @@ int numberOfFilledCells(const std::vector<Shape> &shapes) {
     return numberOfFilledCells;
 }
 
-
-//todo check valid groups
+//todo check valid groups??????
 bool isNewWhiteCell(int i, int j, Board board, std::vector<Cell> foundCells) {
     if (foundCells.empty())
         return true;
+
     return false;
+}
+
+bool isWhiteCell(int i, int j, const Input &input, Board board) {
+    if (i > 0 && j > 0 && i < input.dimRow && j < input.dimCol) {
+        return false;
+    }
+    return board.boardCells[i][j].value == -1;
 }
 
 //count number of individual empty groups
@@ -308,7 +323,7 @@ int numberOfEmptyGroupings(const Input &input) {
     for (int i = 0; i < input.dimCol; ++i) {
         for (int j = 0; j < input.dimRow; ++j) {
             if (board.boardCells[i][j].value == -1) {
-                if (isNewWhiteCell(i, j, board, foundCells)) {
+                if (isWhiteCell(i, j, input, board) && isNewWhiteCell(i, j, board, foundCells)) {
                     foundCells.push_back(board.boardCells[i][j]);
                 }
             }
@@ -319,15 +334,46 @@ int numberOfEmptyGroupings(const Input &input) {
 
 }
 
-int numberOfSoloWhiteBlocks(const std::vector<Shape> &shapes) {
+
+int numberOfSoloWhiteBlocks(const Input &input) {
+    Board board = Board(input);
+
+    int numberOfSoloWhiteBlocks = 0;
+    for (int i = 0; i < input.dimCol; ++i) {
+        for (int j = 0; j < input.dimRow; ++j) {
+            //if is a white block
+            if (board.boardCells[i][j].value == -1) {
+                if (!isWhiteCell(i - 1, j - 1, input, board)
+                    && !isWhiteCell(i - 1, j, input, board)
+                    && !isWhiteCell(i - 1, j + 1, input, board)
+                    && !isWhiteCell(i, j - 1, input, board)
+                    && !isWhiteCell(i, j, input, board)
+                    && !isWhiteCell(i, j + 1, input, board)
+                    && !isWhiteCell(i + 1, j - 1, input, board)
+                    && !isWhiteCell(i + 1, j, input, board)
+                    && !isWhiteCell(i + 1, j + 1, input, board))
+                    numberOfSoloWhiteBlocks++;
+            }
+        }
+    }
+
+    return numberOfSoloWhiteBlocks;
+
 
 }
 
 int calculateScore(const Input &input) {
     int totalCapacity = input.dimCol * input.dimRow;
+
+    Board board = Board(input);
+
+    //Invalid board
+    if (board.baseScore < 0)
+        return -100;
+
     int score = numberOfFilledCells(input.shapes) * 10;
     score -= numberOfEmptyGroupings(input) * 2;
-    score -= numberOfSoloWhiteBlocks(input.shapes) * 4;
+    score -= numberOfSoloWhiteBlocks(input) * 4;
 
     return floor(totalCapacity / numberOfFilledCells(input.shapes) * score);
 }
