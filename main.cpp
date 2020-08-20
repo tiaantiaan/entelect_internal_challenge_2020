@@ -94,9 +94,12 @@ public:
         for (auto &shape : input.shapes) {
             for (auto &cell : shape.cells) {
                 //Trying to place ontop of previous placement OR trying to place on blocked section
-                if (boardCells[cell.col][cell.row].value != -1)
+                if (cell.col >= input.dimCol || cell.row >= input.dimRow || cell.col < 0 || cell.row < 0
+                    || boardCells[cell.col][cell.row].value != -1) {
                     baseScore = -1;
-                boardCells[cell.col][cell.row].value = 1;
+                } else {
+                    boardCells[cell.col][cell.row].value = 1;
+                }
             }
         }
 
@@ -460,7 +463,7 @@ bool isWhiteCell(int i, int j, const Input &input, Board board) {
     return board.boardCells[i][j].value == -1;
 }
 
-bool isSoloCell(int i, int j,const Input &input, const Board &board ) {
+bool isSoloCell(int i, int j, const Input &input, const Board &board) {
     return (!isWhiteCell(i - 1, j - 1, input, board)
             && !isWhiteCell(i - 1, j, input, board)
             && !isWhiteCell(i - 1, j + 1, input, board)
