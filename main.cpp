@@ -95,7 +95,7 @@ Input getInput(const std::string &filename) {
     for (int i = 3; i < lines.size() - 1; i++) {
         std::string id = lines[i].substr(0, lines[i].find(','));
         std::string num  = lines[i].substr(lines[i].find(',') + 1, lines[i].length());
-        input.shapes.push_back(Shape(std::stoi(id), std::stoi(num)));
+        input.shapes.push_back(Shape(std::stoi(id), std::stoi(num), 0));
     }
 
     const std::vector<std::string> blockedCells = split(lines[lines.size() - 1], '|');
